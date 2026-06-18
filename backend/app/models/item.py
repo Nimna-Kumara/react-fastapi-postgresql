@@ -3,7 +3,7 @@ from sqlalchemy import String, Integer, Text, ForeignKey, DateTime, Boolean, fun
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from db.database import Base
-from models.user import User
+
 
 class Item(Base):
     __tablename__ = "items"
