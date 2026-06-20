@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../api/auth";
 
@@ -8,6 +8,7 @@ export default function RegisterPage() {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -16,7 +17,7 @@ export default function RegisterPage() {
         setError("");
         setLoading(true);
         try {
-            await register(email, username, password);
+            await register(email, username, name, password);
             navigate("/login");
         }
         catch (error) {
@@ -53,6 +54,16 @@ export default function RegisterPage() {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder="nimnadh"
+                        required
+                    />
+
+                    <label className="label">Full name</label>
+                    <input
+                        className="input"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Nimna Anjana"
                         required
                     />
 
