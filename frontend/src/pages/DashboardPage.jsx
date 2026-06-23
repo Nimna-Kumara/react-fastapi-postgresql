@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { createItem, fetchItems } from "../api/items";
-import useAuth from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
+import ItemCard from "../components/ItemCard";
 
-export default function ItemCard() {
+export default function DashboardPage() {
     const { user } = useAuth();
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -12,6 +13,7 @@ export default function ItemCard() {
     const [error, setError] = useState("");
 
     useEffect(() => {
+        setLoading(true);
         fetchItems()
             .then(setItems)
             .finally(() => setLoading(false));
@@ -54,6 +56,7 @@ export default function ItemCard() {
             <div className="dash-header">
                 <div>
                     <h2 className="dash-title">My Items</h2>
+
                     <p className="dash-sub">
                         {total === 0
                             ? "No items yet. Add one below."

@@ -6,4 +6,5 @@ export default function PrivateRoute({ children }) {
 
     if (loading) return <div className="spinner-wrap"><div className="spinner" /></div>;
     if (!user) return <Navigate to="/login" replace />;
+    return children;
 }
