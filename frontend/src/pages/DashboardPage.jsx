@@ -25,7 +25,7 @@ export default function DashboardPage() {
         setCreating(true);
         setError("");
         try {
-            const item = await createItem({ title, description });
+            const item = await createItem(title, description);
             setItems((prev) => [item, ...prev]);
             setTitle("");
             setDescription("");

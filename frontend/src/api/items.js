@@ -1,12 +1,12 @@
 import client from "./client";
 
 export async function fetchItems() {
-    const { data } = await client.get("/items");
+    const { data } = await client.get("/items/");
     return data;
 }
 
 export async function createItem(title, description = "") {
-    const { data } = await client.post("/items", { title, description });
+    const { data } = await client.post("/items/", { title, description });
     return data;
 }
 
