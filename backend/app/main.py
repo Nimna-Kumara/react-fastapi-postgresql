@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from core.config import settings
 from routers.auth import router as auth_router
+from routers.items import router as items_router
 from db.database import Base, engine
 
 app = FastAPI(
@@ -24,3 +25,4 @@ def startup():
 
 
 app.include_router(auth_router, prefix="/api")
+app.include_router(items_router, prefix="/api")
